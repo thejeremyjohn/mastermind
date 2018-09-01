@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from .models import Highscore
+from .serializers import HighscoreSerializer
+from rest_framework import generics
 
-# Create your views here.
+class HighscoreListCreate(generics.ListCreateAPIView):
+    queryset = Highscore.objects.all()
+    serializer_class = HighscoreSerializer
