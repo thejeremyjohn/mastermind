@@ -5,8 +5,22 @@
 }
 
 div {
-  /* padding: 5px; */
   margin: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.inner-container {
+  max-width: 685px;
+}
+
+.page-header {
+  font-size: 30px;
+  color: darkcyan;
+  text-align: center;
 }
 
 .how-to-play {
@@ -16,10 +30,10 @@ div {
 }
 
 .hint {
-  /* background-color: lightskyblue; */
   border: 1px dashed darkcyan;
   font-size: 13px;
   padding: 5px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -32,8 +46,9 @@ div {
 
 .game {
   background-color: lightblue;
-  display: inline-block;
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
@@ -41,35 +56,58 @@ input {
   text-align: center;
 }
 
-#guess-input {
+.guess-form {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row nowrap;
+}
+
+.guess {
   font-size: 30px;
-  width: 200px;
+}
+
+#guess-input {
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.name-form {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.name-form > .form-field {
+  max-width: 165px;
+}
+
+.form-field {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-#go-button {
-  font-size: 30px;
+.form-button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-/* .highscores.div {
-  background-color: lightblue;
-} */
 .highscores div.column {
   background-color: darkseagreen;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
-
 
 .history {
   background-color: lightblue;
-  width: 273px;
+  min-width: 250px;
+  max-width: 273px;
   text-align: center;
 }
+
 .history div.column {
   background-color: lightblue;
   margin: 0;
@@ -78,14 +116,11 @@ input {
   align-items: center;
 }
 
-.subtitle {
-  /* margin: 0 24px 24px 24px; */
-}
-
 .turns-remaining {
   text-align: center;
 }
 .message {
+  background-color: lightblue;
   color: lightcoral;
   text-align: center;
 }
@@ -94,8 +129,3 @@ input {
   background-color: cadetblue;
   color: honeydew;
 }
-
-/* td {
-  display: flex;
-  flex-flow: column, nowrap;
-} */
