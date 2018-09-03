@@ -44,7 +44,7 @@ export default class Game extends Component {
       this.turnsRemaining--;
       let result = this.compare(guess);
       let history = this.concatHistory(result);
-      this.setState({ history, guess: '' })
+      this.setState({ guess:'', message:'', history })
       this.evaluate(result);
     } else {
       this.setState({ message: 'need 4 unique digits' })
