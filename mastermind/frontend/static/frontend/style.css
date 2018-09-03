@@ -1,0 +1,101 @@
+* {
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+div {
+  /* padding: 5px; */
+  margin: 15px;
+}
+
+.how-to-play {
+  background-color: lightblue;
+  padding: 15px;
+  text-align: center;
+}
+
+.hint {
+  /* background-color: lightskyblue; */
+  border: 1px dashed darkcyan;
+  font-size: 13px;
+  padding: 5px;
+  text-align: center;
+}
+
+.game-container {
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.game {
+  background-color: lightblue;
+  display: inline-block;
+  /* flex-direction: column; */
+}
+
+input {
+  border-style: hidden;
+  text-align: center;
+}
+
+#guess-input {
+  font-size: 30px;
+  width: 200px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#go-button {
+  font-size: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* .highscores.div {
+  background-color: lightblue;
+} */
+.highscores div.column {
+  background-color: darkseagreen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.history {
+  background-color: lightblue;
+  width: 273px;
+  text-align: center;
+}
+.history div.column {
+  background-color: lightblue;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitle {
+  /* margin: 0 24px 24px 24px; */
+}
+
+.turns-remaining {
+  text-align: center;
+}
+.message {
+  color: lightcoral;
+  text-align: center;
+}
+
+.table {
+  background-color: cadetblue;
+  color: honeydew;
+}
+
+/* td {
+  display: flex;
+  flex-flow: column, nowrap;
+} */

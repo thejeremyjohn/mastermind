@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'game',
     'highscores',
     'rest_framework',
+    'frontend',
 ]
 
 MIDDLEWARE = [
