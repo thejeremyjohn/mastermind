@@ -1,0 +1,20 @@
+[
+    {
+        "model": "highscores.highscore",
+        "pk": 1,
+        "fields": {
+            "name": "lucky",
+            "score": 9328358,
+            "created_at": "2018-02-14 00:00:00"
+        }
+    },
+    {
+        "model": "highscores.highscore",
+        "pk": 2,
+        "fields": {
+            "name": "averageJoe",
+            "score": 16127,
+            "created_at": "2018-01-14 00:00:00"
+        }
+    }
+]

@@ -20,8 +20,8 @@ const Table = ({ data, tableName }) =>
           <tr>
             {
               Object.entries(data[0])
-                .filter(el => el[0] !== 'id' && el[0] !== 'created_at')
-                .map(el => <th key={key(el)}>{el[0]}</th>)
+                .filter(el => el[0] !== 'id')
+                .map(el => <th key={ key(el) }>{ el[0] }</th>)
             }
           </tr>
         </thead>
@@ -30,8 +30,8 @@ const Table = ({ data, tableName }) =>
             <tr key={el.id}>
               {
                 Object.entries(el)
-                  .filter(el => el[0] !== 'id' && el[0] !== 'created_at')
-                  .map(el => <td key={key(el)}>{el[1]}</td>)
+                  .filter(el => el[0] !== 'id')
+                  .map(el => <td key={ key(el) }>{ el[1] }</td>)
               }
             </tr>
           ))}

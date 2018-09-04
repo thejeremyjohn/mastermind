@@ -4,4 +4,4 @@ from .models import Highscore
 class HighscoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Highscore
-        fields = '__all__'
+        fields = ('id', 'name', 'score')

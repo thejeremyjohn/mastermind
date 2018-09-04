@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Table from "./Table";
+import React, { Component } from 'react';
+import Table from './Table';
 import sampleSize from 'lodash/sampleSize'
 import Inputmask from 'inputmask';
 
@@ -77,7 +77,7 @@ export default class Game extends Component {
     };
 
     if (this.gameWon || this.turnsRemaining===0) {
-      let guessForm = document.querySelector(".guess-form");
+      let guessForm = document.querySelector('.guess-form');
       toggleDisabled(guessForm);
     }
   }
@@ -94,7 +94,7 @@ export default class Game extends Component {
 
   addHighscore(e) {
     e.preventDefault();
-    let nameForm = document.querySelector(".name-form");
+    let nameForm = document.querySelector('.name-form');
     toggleDisabled(nameForm);
 
     const highscore = {
@@ -102,27 +102,32 @@ export default class Game extends Component {
       score: this.score,
     };
     const conf = {
-      method: "post",
+      method: 'post',
       body: JSON.stringify(highscore),
-      headers: new Headers({ "Content-Type": "application/json" }),
-      redirect: 'follow',
+      headers: new Headers({ 'Content-Type': 'application/json' }),
     };
     fetch('api/highscore/', conf)
       .then(response => {
-        if (!response.ok) console.log(response);
-        this.getHighscores();
+        if (!response.ok) {
+          console.log(response);
+        } else {
+          this.getHighscores();
+          nameForm.lastChild.setAttribute('value', 'Saved');
+        }
       });
   }
 
   getHighscores() {
-    fetch("api/highscore/")
+    fetch('api/highscore/')
       .then(response => {
         if (!response.ok) console.log(response);
         return response.json();
       })
       .then(data => {
-        data.sort((a,b) => b.score - a.score);
-        let highscores = data.slice(0, 10);
+        let highscores = data.map((el, idx) => (
+          Object.assign({}, el, {rank: idx+1})
+        ));
+        console.log(highscores);
         this.setState({ highscores });
       })
   }
@@ -145,47 +150,47 @@ export default class Game extends Component {
   // <h1>{this.secret}</h1>
   render() {
     return (
-      <div className="inner-container">
-        <h1 className="page-header">M A S T E R M I N D</h1>
+      <div className='inner-container'>
+        <h1 className='page-header'>M A S T E R M I N D</h1>
 
-        <div className="how-to-play">
+        <div className='how-to-play'>
           <p>
             <strong>How to play:</strong> Figure out the 4-digit code.
             Every digit is unique. You have up to 10 turns to solve the code.
             The faster you solve, the higher your score.
           </p>
-          <p className="hint">
+          <p className='hint'>
             <strong>white</strong> = correct digits in the wrong position.
             <strong>red</strong> = correct digits in the correct position.
           </p>
         </div>
 
-        <div className="game-container">
-          <div className="game">
-            <form className="guess-form" onSubmit={this.takeTurn}>
+        <div className='game-container'>
+          <div className='game'>
+            <form className='guess-form' onSubmit={this.takeTurn}>
               <input
-                id="guess-input" className="guess form-field" type="text"
+                id='guess-input' className='guess form-field' type='text'
                 ref={(input) => { this.guessInput = input; }}
                 value={this.state.guess} autoComplete='off'
                 onChange={this.update('guess')}
               ></input>
-              <input className="guess form-button" type="submit" value='GO'></input>
+              <input className='guess form-button' type='submit' value='GO'></input>
             </form>
-            <h2 className="turns-remaining">
+            <h2 className='turns-remaining'>
               {`${this.turnsRemaining} turn${this.turnsRemaining>1 ? 's' : ''} remaining`}
             </h2>
-            <h3 className="message"><strong>{this.state.message}</strong></h3>
+            <h3 className='message'><strong>{this.state.message}</strong></h3>
 
             {this.highscoreForm()}
             {this.playAgainButton()}
           </div>
 
-          <div className="history">
+          <div className='history'>
             <Table data={this.state.history} tableName='History' />
           </div>
         </div>
 
-        <div className="highscores">
+        <div className='highscores'>
           <Table data={this.state.highscores} tableName='Highscores' />
         </div>
       </div>
@@ -195,17 +200,17 @@ export default class Game extends Component {
   highscoreForm() {
     if (this.gameWon) {
       return (
-        <form className="name-form" onSubmit={this.addHighscore}>
+        <form className='name-form' onSubmit={this.addHighscore}>
           <input
-            className="form-field" type="text" required
-            placeholder="name"
-            maxLength="15"
+            className='form-field' type='text' required
+            placeholder='name'
+            maxLength='15'
             value={this.state.name}
             onChange={this.update('name')}
           ></input>
         <input
-          id="save-score" className="form-button"
-          type="submit" value='Save Score'
+          id='save-score' className='form-button'
+          type='submit' value='Save Score'
         ></input>
         </form>
       )
@@ -217,9 +222,9 @@ export default class Game extends Component {
       return (
         <div>
           <button
-            className="play-again"
+            className='play-again'
             onClick={() => {
-              let guessForm = document.querySelector(".guess-form");
+              let guessForm = document.querySelector('.guess-form');
               toggleDisabled(guessForm);
               this.newGame();
             }}
