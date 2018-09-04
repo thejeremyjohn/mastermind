@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Table from './Table';
 import sampleSize from 'lodash/sampleSize'
 import Inputmask from 'inputmask';
@@ -73,7 +74,7 @@ export default class Game extends Component {
       this.score = Math.floor( basePoints/speedModifier );
       this.setState({ message: `YOU WIN !!! Your score is ${this.score}` });
     } else if (this.turnsRemaining===0) {
-      this.setState({ message: 'You Lose' });
+      this.setState({ message: `You Lose. The code was ${this.secret.join('-')}` });
     };
 
     if (this.gameWon || this.turnsRemaining===0) {
@@ -127,7 +128,6 @@ export default class Game extends Component {
         let highscores = data.map((el, idx) => (
           Object.assign({}, el, {rank: idx+1})
         ));
-        console.log(highscores);
         this.setState({ highscores });
       })
   }
@@ -192,6 +192,7 @@ export default class Game extends Component {
 
         <div className='highscores'>
           <Table data={this.state.highscores} tableName='Highscores' />
+          <div><Link to={'/highscores'}>all highscores</Link></div>
         </div>
       </div>
     )
